@@ -1,12 +1,9 @@
 #include <iostream>
-
 using namespace std;
-
 
 char board[3][3] = { {'1','2','3'}, {'4','5','6'}, {'7','8','9'} };
 char current_marker;
 int current_player;
-
 
 void drawBoard() {
     cout << "\n";
@@ -17,7 +14,6 @@ void drawBoard() {
     cout << " " << board[2][0] << " | " << board[2][1] << " | " << board[2][2] << " \n";
     cout << "\n";
 }
-
 
 bool placeMarker(int slot) {
     int row = (slot - 1) / 3;
@@ -42,7 +38,6 @@ int winner() {
     return 0;
 }
 
-
 void swapPlayerAndMarker() {
     if (current_marker == 'X') current_marker = 'O';
     else current_marker = 'X';
@@ -54,13 +49,9 @@ void swapPlayerAndMarker() {
 void game() {
     cout << "Player 1, choose your marker (X or O): ";
     cin >> current_marker;
-
     current_player = 1;
-
     drawBoard();
-
     int player_won = 0;
-
     for (int i = 0; i < 9; i++) {
         cout << "Player " << current_player << "'s turn. Enter your slot (1-9): ";
         int slot;
@@ -71,13 +62,11 @@ void game() {
             continue;
         }
 
-
         if (!placeMarker(slot)) {
             cout << "Slot already taken! Try another slot.\n";
             i--;
             continue;
         }
-
         drawBoard();
         player_won = winner();
         if (player_won == 1) { cout << "Congratulations! Player 1 wins!\n"; break; }
@@ -89,7 +78,6 @@ void game() {
         cout << "It's a tie (تعادل)!\n";
     }
 }
-
 int main() {
     game();
     return 0;
